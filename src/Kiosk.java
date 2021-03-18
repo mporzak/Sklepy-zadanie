@@ -16,13 +16,6 @@ public class Kiosk extends Sklep implements Transakcje{
         super(nazwa, adres);
     }
 
-    public String magazyn(){
-        for(Gazety g : Gazety.values()){
-            System.out.println(g.name() + " - " + getIlosc(g) +" szt.");
-        }
-        return "";
-    }
-
     public String getTyp(){
         return TYP;
     }
@@ -32,6 +25,15 @@ public class Kiosk extends Sklep implements Transakcje{
         System.out.println(magazyn());
     }
 
+    //wypisz towar w kiosku
+    public String magazyn(){
+        for(Gazety g : Gazety.values()){
+            System.out.println(g.name() + " - " + getIlosc(g) +" szt.");
+        }
+        return "";
+    }
+
+    //zwraca ilosc dostepnych sztuk danej gazety
     @Override
     public int getIlosc(Gazety g) {
         int liczbaPowtorzen = Collections.frequency(gazetyWKiosku, g);
@@ -45,7 +47,7 @@ public class Kiosk extends Sklep implements Transakcje{
         System.out.print("Spzedaz gazety " + g.name().toString() + " wyniosla ");
         return liczbaPowtorzen;
     }
-
+    //obsluguje dostawe i sprzedaz gazet
     @Override
     public void wykonaj(Czynnosc c, Gazety g, int ilosc) {
         if(c.equals(Czynnosc.DOSTAWA)){
@@ -56,8 +58,8 @@ public class Kiosk extends Sklep implements Transakcje{
             this.towarDostepny += ilosc;
         } else if (c.equals(Czynnosc.SPRZEDAZ)){
             for(int i =0; i < ilosc; i++){
-                gazetyWKiosku.remove(g);
-                gazetySprzedane.add(g);
+                    gazetyWKiosku.remove(g);
+                    gazetySprzedane.add(g);
             }
             this.przychod += g.getCenaDetaliczna() * ilosc;
             this.towarDostepny -= ilosc;
