@@ -4,7 +4,7 @@ import java.util.List;
 public class Galeria extends Sklep{
     private static final String TYP = "Galeria";
     private double zysk;
-    List<Sklep> sklepyGaleria = new ArrayList<>();
+    List<Sklep> sklepyGaleria;
 
     public Galeria(String nazwa, Adres adres, List<Sklep> sklepyGaleria) {
         super(nazwa, adres);
@@ -29,6 +29,7 @@ public class Galeria extends Sklep{
     public void info() {
         super.info();
         listaSklepow();
+        System.out.println();
     }
 
     @Override
@@ -36,7 +37,6 @@ public class Galeria extends Sklep{
         for(Sklep sklep : sklepyGaleria){
             zysk += sklep.getZysk();
         }
-        System.out.print("Całkowity zysk galerii wynosi: " + zysk);
         return zysk;
     }
 }
