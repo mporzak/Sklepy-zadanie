@@ -33,7 +33,7 @@ public class Zamowienie<T> {
             sumaZamowienia += iloscPowtorzen * m.getCena();
         }
         System.out.println("---------------------");
-        System.out.println("Razem: " + sumaZamowienia + " zl");
+        System.out.println("Razem: " + sumaZamowienia + " zl \n");
     }
 
     public double getSumaZamowienia() {
